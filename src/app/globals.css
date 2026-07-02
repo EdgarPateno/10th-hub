@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-canvas text-slate-body font-sans antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04";
+  }
+  h1, h2, h3, h4 {
+    @apply font-display text-ink;
+    letter-spacing: -0.02em;
+  }
+  /* Visible keyboard focus everywhere (a11y) */
+  :focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(37, 87, 230, 0.4);
+    border-radius: 4px;
+  }
+  ::selection {
+    background: #dce6ff;
+    color: #0b1220;
+  }
+}
+
+@layer components {
+  .container-hub {
+    @apply mx-auto w-full max-w-content px-5 sm:px-6 lg:px-8;
+  }
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-[13px] font-semibold uppercase tracking-[0.14em];
+  }
+  .card {
+    @apply rounded-2xl border border-line bg-white shadow-card;
+  }
+  .link-underline {
+    @apply relative font-medium text-brand hover:text-brand-600;
+  }
+  /* Tabular numbers for stats/prices to avoid layout shift */
+  .tnum {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Keyframe used by the HubGraphic connection lines (arbitrary animate-[dash...]) */
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Respect reduced motion for all decorative animation */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
