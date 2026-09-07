@@ -41,7 +41,7 @@ export default function ForEmployersPage() {
       {/* Pain -> solution */}
       <section className="container-hub py-16 sm:py-20">
         <div className="grid gap-10 lg:grid-cols-2">
-          <div className="rounded-2xl border border-line bg-white p-8">
+          <div className="glass p-8">
             <h2 className="text-xl font-bold text-ink">The old way drains you</h2>
             <ul className="mt-5 space-y-3">
               {[
@@ -72,14 +72,14 @@ export default function ForEmployersPage() {
       </section>
 
       {/* Service categories */}
-      <section className="border-y border-line bg-white">
+      <section className="band border-y border-azure-200">
         <div className="container-hub py-16 sm:py-20">
           <SectionHeading
             eyebrow="Roles we fill"
             title="Pick the role you need filled"
             intro="Every category is staffed by VAs who already know the tools and workflows."
           />
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((s) => (
               <ServiceCard key={s.slug} service={s} />
             ))}
@@ -108,7 +108,7 @@ export default function ForEmployersPage() {
       </section>
 
       {/* Testimonials near CTA */}
-      <section className="border-t border-line bg-white">
+      <section className="band border-t border-azure-200">
         <div className="container-hub py-16 sm:py-20">
           <SectionHeading align="center" title="What employers say" eyebrow="Social proof" />
           <div className="mt-10 grid gap-5 md:grid-cols-3">

@@ -30,14 +30,14 @@ export default function AboutPage() {
               intro="We measure success by matches that last — not sign-ups. That means we only win when a business keeps its VA and a VA keeps their client. It's why we vet carefully, price fairly, and support both sides long after the match is made."
             />
           </div>
-          <div className="rounded-3xl border border-line bg-white p-8">
+          <div className="glass rounded-3xl p-8">
             <HubGraphic className="mx-auto w-full max-w-md" />
           </div>
         </div>
       </section>
 
       {/* Why us vs generic platforms */}
-      <section className="border-y border-line bg-white">
+      <section className="band border-y border-azure-200">
         <div className="container-hub py-16 sm:py-20">
           <SectionHeading
             align="center"
@@ -73,7 +73,7 @@ export default function AboutPage() {
       </section>
 
       {/* Credibility / founder note */}
-      <section className="border-t border-line bg-white">
+      <section className="band border-t border-azure-200">
         <div className="container-hub py-16 sm:py-20">
           <div className="mx-auto max-w-3xl rounded-3xl border border-line bg-canvas p-8 sm:p-10">
             <div className="flex items-center gap-4">

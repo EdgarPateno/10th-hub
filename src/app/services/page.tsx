@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { PageHeader } from "@/components/PageHeader";
 import { ServiceCard } from "@/components/ServiceCard";
 import { CTASection } from "@/components/CTASection";
-import { SectionHeading } from "@/components/ui";
+import { Stagger, StaggerItem } from "@/components/Motion";
 import { services } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -20,12 +20,15 @@ export default function ServicesPage() {
         intro="Match with a virtual assistant who already knows the role and the tools. Explore a category to see what's included and what it costs."
       />
 
+      {/* 9 services → an exact 3x3 at lg, 2-up at sm. No orphan row. */}
       <section className="container-hub py-16 sm:py-20">
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <Stagger className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((s) => (
-            <ServiceCard key={s.slug} service={s} />
+            <StaggerItem key={s.slug}>
+              <ServiceCard service={s} />
+            </StaggerItem>
           ))}
-        </div>
+        </Stagger>
       </section>
 
       <CTASection

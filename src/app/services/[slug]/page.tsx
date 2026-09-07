@@ -29,7 +29,7 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
 
   return (
     <>
-      <section className="border-b border-line bg-white">
+      <section className="band border-b border-azure-200">
         <div className="container-hub py-14 sm:py-16">
           <nav className="mb-6 flex items-center gap-2 text-sm text-slate-muted" aria-label="Breadcrumb">
             <Link href="/services" className="hover:text-brand">
@@ -80,7 +80,7 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
         <h2 className="text-2xl font-bold text-ink">What a {service.name} VA can take off your plate</h2>
         <div className="mt-8 grid gap-4 sm:grid-cols-2">
           {service.tasks.map((task) => (
-            <div key={task} className="flex items-start gap-3 rounded-xl border border-line bg-white p-5">
+            <div key={task} className="glass flex items-start gap-3 rounded-xl p-5">
               <span className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-brand-50 text-brand">
                 <Icon.check className="h-4 w-4" />
               </span>
@@ -91,7 +91,7 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
       </section>
 
       {/* Related */}
-      <section className="border-t border-line bg-white">
+      <section className="band border-t border-azure-200">
         <div className="container-hub py-16">
           <div className="flex items-end justify-between gap-4">
             <h2 className="text-2xl font-bold text-ink">Other services</h2>

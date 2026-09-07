@@ -23,7 +23,7 @@ export default function ContactPage() {
       <section className="container-hub py-16 sm:py-20">
         <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
           <div className="space-y-6">
-            <div className="rounded-2xl border border-line bg-white p-6">
+            <div className="glass p-6">
               <span className="grid h-10 w-10 place-items-center rounded-xl bg-brand-50 text-brand">
                 <Icon.users className="h-5 w-5" />
               </span>
@@ -36,7 +36,7 @@ export default function ContactPage() {
               </ButtonLink>
             </div>
 
-            <div className="rounded-2xl border border-line bg-white p-6">
+            <div className="glass p-6">
               <span className="grid h-10 w-10 place-items-center rounded-xl bg-talent-50 text-talent-700">
                 <Icon.spark className="h-5 w-5" />
               </span>

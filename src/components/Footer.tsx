@@ -4,7 +4,7 @@ import { HubMark } from "./HubGraphic";
 
 export function Footer() {
   return (
-    <footer className="mt-8 border-t border-line bg-white">
+    <footer className="band mt-8 border-t border-azure-200">
       <div className="container-hub grid gap-10 py-14 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
         <div className="max-w-xs">
           <Link href="/" className="flex items-center gap-2.5" aria-label={`${site.name} home`}>
@@ -44,7 +44,7 @@ export function Footer() {
         ))}
       </div>
 
-      <div className="border-t border-line">
+      <div className="border-t border-azure-200">
         <div className="container-hub flex flex-col items-center justify-between gap-3 py-6 text-sm text-slate-muted sm:flex-row">
           <p>
             © {new Date().getFullYear()} {site.name}. Placeholder content for demonstration.

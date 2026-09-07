@@ -24,9 +24,17 @@ const config: Config = {
         talent: {
           DEFAULT: "#FB6B4B",
           600: "#EE532F",
-          700: "#CC3F1F",
+          700: "#B8381A",
           50: "#FFF1EC",
           100: "#FFE0D5",
+        },
+        // Light-blue atmospheric field (ambient backdrop + frosted surfaces)
+        azure: {
+          50: "#F3F7FF",
+          100: "#E6EEFE",
+          200: "#CFDFFC",
+          300: "#AFC9F8",
+          400: "#82A9F2",
         },
         ink: "#0B1220",
         slate: {
@@ -34,7 +42,7 @@ const config: Config = {
           muted: "#5A6B84",
         },
         line: "#E3E8F0",
-        canvas: "#F7F9FC",
+        canvas: "#E6EEFA",
         verified: "#16A34A",
       },
       fontFamily: {

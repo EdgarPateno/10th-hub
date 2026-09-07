@@ -5,6 +5,8 @@ import { NavBar } from "@/components/NavBar";
 import { Footer } from "@/components/Footer";
 import { ScarcityBanner } from "@/components/ScarcityBanner";
 import { MobileCTABar } from "@/components/MobileCTABar";
+import { Backdrop } from "@/components/Backdrop";
+import { MotionProvider } from "@/components/Motion";
 
 const display = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -48,20 +50,37 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${display.variable} ${body.variable}`}>
+      <head>
+        {/*
+          No-JS safety net. Motion serialises its `initial` state (opacity: 0)
+          into the static export, so if the bundle never runs, force every
+          reveal wrapper visible. Inert the moment JS is available.
+        */}
+        <noscript
+          dangerouslySetInnerHTML={{
+            __html:
+              "<style>[data-reveal]{opacity:1!important;transform:none!important}</style>",
+          }}
+        />
+      </head>
       <body className="min-h-dvh">
-        <a
-          href="#main"
-          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-brand focus:px-4 focus:py-2 focus:text-white"
-        >
-          Skip to content
-        </a>
-        <ScarcityBanner />
-        <NavBar />
-        <main id="main" className="pb-24 lg:pb-0">
-          {children}
-        </main>
-        <Footer />
-        <MobileCTABar />
+        {/* CSS-only ambient blue field. Zero JS, aria-hidden, z-index -1. */}
+        <Backdrop />
+        <MotionProvider>
+          <a
+            href="#main"
+            className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-brand focus:px-4 focus:py-2 focus:text-white"
+          >
+            Skip to content
+          </a>
+          <ScarcityBanner />
+          <NavBar />
+          <main id="main" className="pb-24 lg:pb-0">
+            {children}
+          </main>
+          <Footer />
+          <MobileCTABar />
+        </MotionProvider>
       </body>
     </html>
   );

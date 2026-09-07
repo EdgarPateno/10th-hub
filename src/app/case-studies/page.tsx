@@ -24,7 +24,7 @@ export default function CaseStudiesPage() {
         {caseStudies.map((cs, i) => (
           <article
             key={cs.slug}
-            className="overflow-hidden rounded-3xl border border-line bg-white shadow-card"
+            className="glass overflow-hidden rounded-3xl"
           >
             <div className="grid lg:grid-cols-[1.3fr_1fr]">
               <div className="p-8 sm:p-10">

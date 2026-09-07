@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { ButtonLink } from "@/components/Button";
 import { HubGraphic } from "@/components/HubGraphic";
 import { ServiceCard } from "@/components/ServiceCard";
@@ -6,6 +5,7 @@ import { TestimonialCard } from "@/components/TestimonialCard";
 import { CTASection } from "@/components/CTASection";
 import { StatBand, TrustRow, StepList } from "@/components/blocks";
 import { SectionHeading, Badge } from "@/components/ui";
+import { Reveal, Stagger, StaggerItem } from "@/components/Motion";
 import { Icon } from "@/components/Icons";
 import { services, testimonials } from "@/lib/content";
 import { site } from "@/lib/site";
@@ -13,61 +13,75 @@ import { site } from "@/lib/site";
 export default function HomePage() {
   return (
     <>
-      {/* ---------------- Dual-path hero (signature) ---------------- */}
-      <section className="relative overflow-hidden border-b border-line bg-white">
+      {/* ---------------- Dual-path hero (signature) ----------------
+          No opaque background: the hero sits directly on the ambient blue
+          field. One orchestrated entrance, cascading down the left column. */}
+      <section className="relative overflow-hidden border-b border-line/70">
         <div className="container-hub grid items-center gap-12 py-14 lg:grid-cols-[1.05fr_0.95fr] lg:py-20">
-          <div className="animate-fade-up">
-            <Badge tone="verified">Trusted by 2,400+ businesses & VAs</Badge>
-            <h1 className="mt-5 text-balance text-4xl font-extrabold leading-[1.05] text-ink sm:text-5xl lg:text-[3.4rem]">
-              One hub. <span className="text-brand">Two</span> ways to{" "}
-              <span className="text-talent">win.</span>
-            </h1>
-            <p className="mt-5 max-w-xl text-lg leading-relaxed text-slate-body">
-              10th HUB connects growing businesses with vetted virtual assistants —
-              and connects skilled VAs with legitimate, well-paid remote work. Pick
-              your path.
-            </p>
+          <div>
+            <Reveal>
+              <Badge tone="verified">Trusted by 2,400+ businesses &amp; VAs</Badge>
+            </Reveal>
+            <Reveal delay={0.07}>
+              <h1 className="mt-5 text-balance text-4xl font-extrabold leading-[1.05] text-ink sm:text-5xl lg:text-[3.4rem]">
+                One hub. <span className="text-brand">Two</span> ways to{" "}
+                <span className="text-talent">win.</span>
+              </h1>
+            </Reveal>
+            <Reveal delay={0.14}>
+              <p className="mt-5 max-w-xl text-lg leading-relaxed text-slate-body">
+                10th HUB connects growing businesses with vetted virtual assistants —
+                and connects skilled VAs with legitimate, well-paid remote work. Pick
+                your path.
+              </p>
+            </Reveal>
 
-            {/* Two clearly separated, audience-colored paths */}
+            {/* Two clearly separated, audience-colored paths.
+                Tints stay opaque enough to survive the drifting field —
+                the blue/coral split is the brand's core signal. */}
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
-              <div className="rounded-2xl border border-brand-100 bg-brand-50/60 p-5">
-                <div className="flex items-center gap-2 text-brand">
-                  <Icon.users className="h-5 w-5" />
-                  <span className="font-display text-sm font-bold uppercase tracking-wider">
-                    I'm hiring
-                  </span>
+              <Reveal delay={0.21}>
+                <div className="h-full rounded-2xl border border-brand-100 bg-brand-50/85 p-5 shadow-card backdrop-blur-sm transition-shadow duration-300 hover:shadow-cardHover">
+                  <div className="flex items-center gap-2 text-brand">
+                    <Icon.users className="h-5 w-5" />
+                    <span className="font-display text-sm font-bold uppercase tracking-wider">
+                      I&apos;m hiring
+                    </span>
+                  </div>
+                  <p className="mt-2 text-sm text-slate-body">
+                    Get matched with a vetted VA in 72 hours.
+                  </p>
+                  <ButtonLink href="/hire" variant="brand" className="mt-4 w-full" withArrow>
+                    Hire Talent
+                  </ButtonLink>
                 </div>
-                <p className="mt-2 text-sm text-slate-body">
-                  Get matched with a vetted VA in 72 hours.
-                </p>
-                <ButtonLink href="/hire" variant="brand" className="mt-4 w-full" withArrow>
-                  Hire Talent
-                </ButtonLink>
-              </div>
+              </Reveal>
 
-              <div className="rounded-2xl border border-talent-100 bg-talent-50/60 p-5">
-                <div className="flex items-center gap-2 text-talent-700">
-                  <Icon.spark className="h-5 w-5" />
-                  <span className="font-display text-sm font-bold uppercase tracking-wider">
-                    I want work
-                  </span>
+              <Reveal delay={0.28}>
+                <div className="h-full rounded-2xl border border-talent-100 bg-talent-50/85 p-5 shadow-card backdrop-blur-sm transition-shadow duration-300 hover:shadow-cardHover">
+                  <div className="flex items-center gap-2 text-talent-700">
+                    <Icon.spark className="h-5 w-5" />
+                    <span className="font-display text-sm font-bold uppercase tracking-wider">
+                      I want work
+                    </span>
+                  </div>
+                  <p className="mt-2 text-sm text-slate-body">
+                    Join and get matched to steady, remote clients.
+                  </p>
+                  <ButtonLink href="/apply" variant="talent" className="mt-4 w-full" withArrow>
+                    Find Work
+                  </ButtonLink>
                 </div>
-                <p className="mt-2 text-sm text-slate-body">
-                  Join and get matched to steady, remote clients.
-                </p>
-                <ButtonLink href="/apply" variant="talent" className="mt-4 w-full" withArrow>
-                  Find Work
-                </ButtonLink>
-              </div>
+              </Reveal>
             </div>
 
-            <div className="mt-7">
+            <Reveal delay={0.35} className="mt-7">
               <TrustRow />
-            </div>
+            </Reveal>
           </div>
 
           {/* Signature hub graphic */}
-          <div className="relative animate-fade-up">
+          <Reveal delay={0.16} className="relative">
             <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_50%_45%,rgba(37,87,230,0.10),transparent_65%)]" />
             <HubGraphic className="mx-auto w-full max-w-lg" />
             <div className="mx-auto mt-2 flex max-w-lg items-center justify-between px-4 text-xs font-semibold uppercase tracking-wider">
@@ -75,19 +89,21 @@ export default function HomePage() {
               <span className="text-slate-muted">matched through</span>
               <span className="text-talent-700">Virtual assistants</span>
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 
       {/* ---------------- Value prop ---------------- */}
       <section className="container-hub py-16 sm:py-20">
-        <SectionHeading
-          align="center"
-          eyebrow="Why 10th HUB"
-          title="Not a job board. A managed match."
-          intro="Generic freelance platforms hand you a search box and wish you luck. We vet the talent, make the match, and stay in the loop — so both sides can just get to work."
-        />
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
+        <Reveal>
+          <SectionHeading
+            align="center"
+            eyebrow="Why 10th HUB"
+            title="Not a job board. A managed match."
+            intro="Generic freelance platforms hand you a search box and wish you luck. We vet the talent, make the match, and stay in the loop — so both sides can just get to work."
+          />
+        </Reveal>
+        <Stagger className="mt-12 grid gap-6 md:grid-cols-3">
           {[
             {
               icon: Icon.shield,
@@ -105,21 +121,23 @@ export default function HomePage() {
               body: "A dedicated success manager backs every placement — for the business and the VA.",
             },
           ].map((f) => (
-            <div key={f.title} className="card p-6">
-              <span className="grid h-11 w-11 place-items-center rounded-xl bg-navy text-white">
-                <f.icon className="h-5 w-5" />
-              </span>
-              <h3 className="mt-4 text-lg font-bold text-ink">{f.title}</h3>
-              <p className="mt-2 text-slate-body">{f.body}</p>
-            </div>
+            <StaggerItem key={f.title}>
+              <div className="glass h-full p-6">
+                <span className="grid h-11 w-11 place-items-center rounded-xl bg-navy text-white">
+                  <f.icon className="h-5 w-5" />
+                </span>
+                <h3 className="mt-4 text-lg font-bold text-ink">{f.title}</h3>
+                <p className="mt-2 text-slate-body">{f.body}</p>
+              </div>
+            </StaggerItem>
           ))}
-        </div>
+        </Stagger>
       </section>
 
       {/* ---------------- Services grid ---------------- */}
-      <section className="border-y border-line bg-white">
+      <section className="band border-y border-line">
         <div className="container-hub py-16 sm:py-20">
-          <div className="flex flex-wrap items-end justify-between gap-4">
+          <Reveal as="div" className="flex flex-wrap items-end justify-between gap-4">
             <SectionHeading
               eyebrow="Roles we fill"
               title="Specialists for the work that slows you down"
@@ -128,19 +146,23 @@ export default function HomePage() {
             <ButtonLink href="/services" variant="outline" size="sm" withArrow>
               All services
             </ButtonLink>
-          </div>
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          </Reveal>
+          {/* 9 services: 3x3 at lg. `lg:grid-cols-4` would strand one card alone
+              on a third row now that Executive Assistant is in the set. */}
+          <Stagger className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((s) => (
-              <ServiceCard key={s.slug} service={s} />
+              <StaggerItem key={s.slug}>
+                <ServiceCard service={s} />
+              </StaggerItem>
             ))}
-          </div>
+          </Stagger>
         </div>
       </section>
 
       {/* ---------------- How it works snapshot ---------------- */}
       <section className="container-hub py-16 sm:py-20">
         <div className="grid gap-12 lg:grid-cols-2">
-          <div>
+          <Reveal>
             <SectionHeading
               eyebrow="For employers"
               title="Hiring, without the hiring"
@@ -159,9 +181,9 @@ export default function HomePage() {
             <ButtonLink href="/for-employers" variant="brand" className="mt-8" withArrow>
               For employers
             </ButtonLink>
-          </div>
+          </Reveal>
 
-          <div>
+          <Reveal delay={0.1}>
             <SectionHeading eyebrow="For VAs" title="Find work worth keeping" tone="talent" />
             <div className="mt-8">
               <StepList
@@ -176,30 +198,36 @@ export default function HomePage() {
             <ButtonLink href="/for-vas" variant="talent" className="mt-8" withArrow>
               For VAs
             </ButtonLink>
-          </div>
+          </Reveal>
         </div>
       </section>
 
       {/* ---------------- Trust / stats ---------------- */}
-      <section className="border-y border-line bg-white">
+      <section className="band border-y border-line">
         <div className="container-hub py-16">
-          <StatBand />
+          <Reveal>
+            <StatBand />
+          </Reveal>
         </div>
       </section>
 
       {/* ---------------- Testimonials (both audiences) ---------------- */}
       <section className="container-hub py-16 sm:py-20">
-        <SectionHeading
-          align="center"
-          eyebrow="Proof, both sides"
-          title="Businesses and VAs, both better off"
-          intro="Placeholder testimonials for this demo — real, attributed quotes would live here."
-        />
-        <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        <Reveal>
+          <SectionHeading
+            align="center"
+            eyebrow="Proof, both sides"
+            title="Businesses and VAs, both better off"
+            intro="Placeholder testimonials for this demo — real, attributed quotes would live here."
+          />
+        </Reveal>
+        <Stagger className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {testimonials.slice(0, 6).map((t) => (
-            <TestimonialCard key={t.name} t={t} />
+            <StaggerItem key={t.name}>
+              <TestimonialCard t={t} />
+            </StaggerItem>
           ))}
-        </div>
+        </Stagger>
       </section>
 
       {/* ---------------- Final CTA ---------------- */}

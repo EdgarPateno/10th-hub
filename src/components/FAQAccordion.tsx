@@ -4,7 +4,7 @@ import { Icon } from "./Icons";
 // Uses native <details>/<summary>: keyboard-accessible and works without JS.
 export function FAQAccordion({ items }: { items: FaqItem[] }) {
   return (
-    <div className="divide-y divide-line overflow-hidden rounded-2xl border border-line bg-white">
+    <div className="glass divide-y divide-line overflow-hidden">
       {items.map((item, i) => (
         <details key={i} className="group">
           <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-5 text-left font-display font-semibold text-ink transition-colors hover:bg-canvas focus-visible:bg-canvas [&::-webkit-details-marker]:hidden">

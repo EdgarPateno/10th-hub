@@ -31,6 +31,19 @@ export const serviceIcons: Record<IconName, (p: Props) => JSX.Element> = {
       <path d="M20 19a4 4 0 0 1-4 4h-2" />
     </S>
   ),
+  // Executive: a managed calendar with a person inside it. Reads as
+  // calendar-and-gatekeeping (the core of the role) and stays legible at 24px
+  // — the header rail + two hangers separate it from `assistant`'s antenna
+  // and dot-eyes, and the rectangular body separates it from `shopify`'s bag.
+  executive: ({ className }) => (
+    <S className={className}>
+      <rect x="3.5" y="5" width="17" height="16" rx="2.4" />
+      <path d="M3.5 9.5h17" />
+      <path d="M8 3v3M16 3v3" />
+      <circle cx="12" cy="13.6" r="1.9" />
+      <path d="M8.6 18.6a3.6 3.6 0 0 1 6.8 0" />
+    </S>
+  ),
   assistant: ({ className }) => (
     <S className={className}>
       <path d="M12 3v3" />

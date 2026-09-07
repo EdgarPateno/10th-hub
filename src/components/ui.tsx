@@ -29,6 +29,7 @@ export function SectionHeading({
   align = "left",
   tone = "brand",
   as: Tag = "h2",
+  className,
 }: {
   eyebrow?: string;
   title: React.ReactNode;
@@ -36,9 +37,10 @@ export function SectionHeading({
   align?: "left" | "center";
   tone?: "brand" | "talent" | "muted";
   as?: "h1" | "h2" | "h3";
+  className?: string;
 }) {
   return (
-    <div className={cn("max-w-2xl", align === "center" && "mx-auto text-center")}>
+    <div className={cn("max-w-2xl", align === "center" && "mx-auto text-center", className)}>
       {eyebrow && (
         <div className={cn("mb-3", align === "center" && "flex justify-center")}>
           <Eyebrow tone={tone}>{eyebrow}</Eyebrow>
@@ -63,11 +65,13 @@ export function Badge({
   tone?: "neutral" | "verified" | "brand" | "talent";
   className?: string;
 }) {
+  // Backgrounds are kept opaque enough to hold AA contrast where they now sit
+  // on the drifting blue field rather than on flat white.
   const tones = {
-    neutral: "bg-canvas text-slate-body border-line",
-    verified: "bg-green-50 text-verified border-green-100",
-    brand: "bg-brand-50 text-brand border-brand-100",
-    talent: "bg-talent-50 text-talent-700 border-talent-100",
+    neutral: "bg-white/75 text-slate-body border-line backdrop-blur-sm",
+    verified: "bg-green-50/90 text-verified border-green-100 backdrop-blur-sm",
+    brand: "bg-brand-50/90 text-brand border-brand-100 backdrop-blur-sm",
+    talent: "bg-talent-50/90 text-talent-700 border-talent-100 backdrop-blur-sm",
   };
   return (
     <span
