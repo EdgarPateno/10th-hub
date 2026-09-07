@@ -45,7 +45,7 @@ export default function PricingPage() {
         </p>
       </section>
 
-      <section className="border-t border-line bg-white">
+      <section className="band border-t border-azure-200">
         <div className="container-hub py-16 sm:py-20">
           <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
             <SectionHeading

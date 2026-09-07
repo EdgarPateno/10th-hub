@@ -5,6 +5,7 @@
 
 export type IconName =
   | "headset"
+  | "executive"
   | "assistant"
   | "code"
   | "shopify"
@@ -44,6 +45,26 @@ export const services: Service[] = [
       "Escalation triage",
     ],
     startingRate: "$8/hr",
+  },
+  {
+    slug: "executive-assistant",
+    name: "Executive Assistant",
+    icon: "executive",
+    short: "Senior, discreet support for founders and the C-suite.",
+    pitch:
+      "A right hand for the person everyone needs. An executive assistant owns your calendar, prepares you for every meeting, and handles board, investor, and travel logistics with the discretion the role demands — making the judgment calls a general VA shouldn't have to.",
+    outcomes: [
+      "A calendar that protects your deep work",
+      "Every meeting prepped and followed up",
+      "Confidential work handled discreetly",
+    ],
+    tasks: [
+      "Calendar ownership & gatekeeping",
+      "Inbox triage & drafted replies",
+      "Board & investor communications",
+      "Travel, expense reports & meeting prep",
+    ],
+    startingRate: "$14/hr",
   },
   {
     slug: "virtual-assistance",

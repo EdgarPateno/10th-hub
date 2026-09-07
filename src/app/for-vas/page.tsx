@@ -62,7 +62,7 @@ export default function ForVAsPage() {
       </section>
 
       {/* How applying works */}
-      <section className="border-y border-line bg-white">
+      <section className="band border-y border-azure-200">
         <div className="container-hub py-16 sm:py-20">
           <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
             <SectionHeading
@@ -92,7 +92,7 @@ export default function ForVAsPage() {
           title="Where your skills fit"
           intro="These are the categories businesses hire for most. Have something else? Choose 'Other' when you apply."
         />
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((s) => (
             <div key={s.slug} className="card flex items-center gap-3 p-4">
               <span className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-talent-50 text-talent-700">
@@ -105,7 +105,7 @@ export default function ForVAsPage() {
       </section>
 
       {/* Testimonials from VAs */}
-      <section className="border-t border-line bg-white">
+      <section className="band border-t border-azure-200">
         <div className="container-hub py-16 sm:py-20">
           <SectionHeading align="center" tone="talent" eyebrow="From our VAs" title="Real work, real support" />
           <div className="mt-10 grid gap-5 md:grid-cols-3">

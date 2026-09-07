@@ -15,7 +15,7 @@ export function Tabs({ tabs, initial = 0 }: { tabs: Tab[]; initial?: number }) {
       <div
         role="tablist"
         aria-label="Choose audience"
-        className="inline-flex gap-1 rounded-full border border-line bg-white p-1 shadow-card"
+        className="glass inline-flex gap-1 rounded-full p-1"
       >
         {tabs.map((t, i) => {
           const on = i === active;

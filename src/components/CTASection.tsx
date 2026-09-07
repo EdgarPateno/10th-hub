@@ -1,5 +1,6 @@
 import { ButtonLink } from "./Button";
 import { HubGraphic } from "./HubGraphic";
+import { Reveal } from "./Motion";
 
 // Final CTA band. Single primary action, honest microcopy underneath.
 export function CTASection({
@@ -21,7 +22,10 @@ export function CTASection({
 }) {
   return (
     <section className="container-hub py-16 sm:py-20">
-      <div className="relative overflow-hidden rounded-3xl bg-navy px-6 py-14 text-center sm:px-12 sm:py-16">
+      <Reveal
+        as="div"
+        className="mesh-navy rounded-3xl px-6 py-14 text-center sm:px-12 sm:py-16"
+      >
         <div
           className="pointer-events-none absolute -right-16 -top-10 hidden w-[380px] opacity-30 lg:block"
           aria-hidden="true"
@@ -51,7 +55,7 @@ export function CTASection({
             <p className="mt-4 text-sm text-brand-100/70">{microcopy}</p>
           )}
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }

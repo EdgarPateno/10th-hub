@@ -11,8 +11,8 @@ export function PricingTable() {
           key={tier.name}
           className={
             tier.featured
-              ? "relative rounded-3xl border-2 border-brand bg-white p-7 shadow-cardHover lg:-mt-3 lg:mb-3"
-              : "relative rounded-3xl border border-line bg-white p-7 shadow-card"
+              ? "glass relative rounded-3xl border-2 border-brand p-7 shadow-cardHover lg:-mt-3 lg:mb-3"
+              : "glass relative rounded-3xl p-7"
           }
         >
           {tier.featured && (

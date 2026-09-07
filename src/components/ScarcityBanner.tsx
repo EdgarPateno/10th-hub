@@ -6,7 +6,7 @@ import { Icon } from "./Icons";
 export function ScarcityBanner() {
   if (site.onboardingSlotsLeft == null) return null;
   return (
-    <div className="bg-navy text-white">
+    <div className="mesh-navy">
       <div className="container-hub flex flex-wrap items-center justify-center gap-x-2 gap-y-1 py-2 text-center text-[13px] font-medium">
         <Icon.bolt className="h-4 w-4 text-talent" />
         <span>
