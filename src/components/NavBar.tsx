@@ -65,10 +65,10 @@ export function NavBar() {
           ))}
         </ul>
 
-        {/* Desktop dual CTAs — clearly separated by audience */}
+        {/* Desktop CTAs — one low-commitment path, one primary conversion */}
         <div className="hidden items-center gap-2 lg:flex">
-          <ButtonLink href="/apply" variant="outline" size="sm">
-            Find Work
+          <ButtonLink href="/contact" variant="outline" size="sm">
+            Talk to us
           </ButtonLink>
           <ButtonLink href="/hire" variant="brand" size="sm" withArrow>
             Hire Talent
@@ -107,12 +107,12 @@ export function NavBar() {
               </li>
             ))}
           </ul>
-          <div className="container-hub grid grid-cols-2 gap-3 pb-4">
-            <ButtonLink href="/apply" variant="outline" className="w-full">
-              Find Work
-            </ButtonLink>
-            <ButtonLink href="/hire" variant="brand" className="w-full">
+          <div className="container-hub flex flex-col gap-2.5 pb-4">
+            <ButtonLink href="/hire" variant="brand" className="w-full" withArrow>
               Hire Talent
+            </ButtonLink>
+            <ButtonLink href="/contact" variant="outline" className="w-full">
+              Talk to us
             </ButtonLink>
           </div>
         </div>

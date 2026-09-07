@@ -8,7 +8,7 @@ import { StepList, TrustRow } from "@/components/blocks";
 import { SectionHeading, CheckItem } from "@/components/ui";
 import { FAQAccordion } from "@/components/FAQAccordion";
 import { Icon } from "@/components/Icons";
-import { services, testimonialsFor, employerFaqs } from "@/lib/content";
+import { services, testimonials, employerFaqs } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Hire a vetted virtual assistant",
@@ -20,7 +20,7 @@ export default function ForEmployersPage() {
   return (
     <>
       <PageHeader
-        eyebrow="For employers"
+        eyebrow="Why 10th HUB"
         tone="brand"
         title="Hire a vetted VA in days, not months."
         intro="Tell us the role once. We shortlist one pre-vetted candidate, you interview them, and they start inside your tools — while we handle contracts, billing, and support."
@@ -112,7 +112,7 @@ export default function ForEmployersPage() {
         <div className="container-hub py-16 sm:py-20">
           <SectionHeading align="center" title="What employers say" eyebrow="Social proof" />
           <div className="mt-10 grid gap-5 md:grid-cols-3">
-            {testimonialsFor("employer").map((t) => (
+            {testimonials.map((t) => (
               <TestimonialCard key={t.name} t={t} />
             ))}
           </div>
@@ -132,7 +132,6 @@ export default function ForEmployersPage() {
       </section>
 
       <CTASection
-        eyebrow="For employers"
         title="Tell us the role. We'll bring the match."
         body="Submit a hiring request and meet a vetted candidate within 72 hours."
         primary={{ label: "Hire Talent", href: "/hire" }}

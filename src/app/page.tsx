@@ -13,67 +13,48 @@ import { site } from "@/lib/site";
 export default function HomePage() {
   return (
     <>
-      {/* ---------------- Dual-path hero (signature) ----------------
+      {/* ---------------- Hero (signature) ----------------
           No opaque background: the hero sits directly on the ambient blue
           field. One orchestrated entrance, cascading down the left column. */}
       <section className="relative overflow-hidden border-b border-line/70">
         <div className="container-hub grid items-center gap-12 py-14 lg:grid-cols-[1.05fr_0.95fr] lg:py-20">
           <div>
             <Reveal>
-              <Badge tone="verified">Trusted by 2,400+ businesses &amp; VAs</Badge>
+              <Badge tone="verified">2,400+ vetted VAs placed with businesses</Badge>
             </Reveal>
             <Reveal delay={0.07}>
               <h1 className="mt-5 text-balance text-4xl font-extrabold leading-[1.05] text-ink sm:text-5xl lg:text-[3.4rem]">
-                One hub. <span className="text-brand">Two</span> ways to{" "}
-                <span className="text-talent">win.</span>
+                Hire a vetted VA in{" "}
+                <span className="text-brand">72 hours.</span>
               </h1>
             </Reveal>
             <Reveal delay={0.14}>
               <p className="mt-5 max-w-xl text-lg leading-relaxed text-slate-body">
-                10th HUB connects growing businesses with vetted virtual assistants —
-                and connects skilled VAs with legitimate, well-paid remote work. Pick
-                your path.
+                10th HUB is a managed marketplace for growing businesses. Tell us the
+                role, meet one pre-vetted virtual assistant, and have them working in
+                your tools the same week — no job posts, no résumé piles.
               </p>
             </Reveal>
 
-            {/* Two clearly separated, audience-colored paths.
-                Tints stay opaque enough to survive the drifting field —
-                the blue/coral split is the brand's core signal. */}
-            <div className="mt-8 grid gap-4 sm:grid-cols-2">
-              <Reveal delay={0.21}>
-                <div className="h-full rounded-2xl border border-brand-100 bg-brand-50/85 p-5 shadow-card backdrop-blur-sm transition-shadow duration-300 hover:shadow-cardHover">
-                  <div className="flex items-center gap-2 text-brand">
-                    <Icon.users className="h-5 w-5" />
-                    <span className="font-display text-sm font-bold uppercase tracking-wider">
-                      I&apos;m hiring
-                    </span>
-                  </div>
-                  <p className="mt-2 text-sm text-slate-body">
-                    Get matched with a vetted VA in 72 hours.
-                  </p>
-                  <ButtonLink href="/hire" variant="brand" className="mt-4 w-full" withArrow>
-                    Hire Talent
-                  </ButtonLink>
-                </div>
-              </Reveal>
+            {/* One primary conversion, one low-commitment path. */}
+            <Reveal delay={0.21}>
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+                <ButtonLink href="/hire" variant="brand" size="lg" withArrow>
+                  Hire Talent
+                </ButtonLink>
+                <ButtonLink href="/how-it-works" variant="outline" size="lg">
+                  See how it works
+                </ButtonLink>
+              </div>
+            </Reveal>
 
-              <Reveal delay={0.28}>
-                <div className="h-full rounded-2xl border border-talent-100 bg-talent-50/85 p-5 shadow-card backdrop-blur-sm transition-shadow duration-300 hover:shadow-cardHover">
-                  <div className="flex items-center gap-2 text-talent-700">
-                    <Icon.spark className="h-5 w-5" />
-                    <span className="font-display text-sm font-bold uppercase tracking-wider">
-                      I want work
-                    </span>
-                  </div>
-                  <p className="mt-2 text-sm text-slate-body">
-                    Join and get matched to steady, remote clients.
-                  </p>
-                  <ButtonLink href="/apply" variant="talent" className="mt-4 w-full" withArrow>
-                    Find Work
-                  </ButtonLink>
-                </div>
-              </Reveal>
-            </div>
+            <Reveal delay={0.28}>
+              <p className="mt-4 text-sm text-slate-muted">
+                {site.onboardingSlotsLeft != null
+                  ? `Only ${site.onboardingSlotsLeft} onboarding slots left this month · Free to submit, no card required`
+                  : "Free to submit, no card required"}
+              </p>
+            </Reveal>
 
             <Reveal delay={0.35} className="mt-7">
               <TrustRow />
@@ -100,7 +81,7 @@ export default function HomePage() {
             align="center"
             eyebrow="Why 10th HUB"
             title="Not a job board. A managed match."
-            intro="Generic freelance platforms hand you a search box and wish you luck. We vet the talent, make the match, and stay in the loop — so both sides can just get to work."
+            intro="Generic freelance platforms hand you a search box and wish you luck. We vet the talent, make the match, and stay in the loop — so you can just get to work."
           />
         </Reveal>
         <Stagger className="mt-12 grid gap-6 md:grid-cols-3">
@@ -117,8 +98,8 @@ export default function HomePage() {
             },
             {
               icon: Icon.users,
-              title: "Supported both ways",
-              body: "A dedicated success manager backs every placement — for the business and the VA.",
+              title: "Supported after the match",
+              body: "A dedicated success manager backs every placement — check-ins, free replacements, and help when your needs change.",
             },
           ].map((f) => (
             <StaggerItem key={f.title}>
@@ -159,45 +140,38 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ---------------- How it works snapshot ---------------- */}
+      {/* ---------------- How it works snapshot ----------------
+          Heading + actions on the left, the numbered flow on the right, so the
+          single client journey fills the row deliberately. */}
       <section className="container-hub py-16 sm:py-20">
-        <div className="grid gap-12 lg:grid-cols-2">
+        <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
           <Reveal>
             <SectionHeading
-              eyebrow="For employers"
+              eyebrow="How it works"
               title="Hiring, without the hiring"
+              intro="Four steps from “we need help” to someone doing the work. We source, vet, and handle the paperwork; you interview one candidate and say yes."
               tone="brand"
             />
-            <div className="mt-8">
-              <StepList
-                tone="brand"
-                steps={[
-                  { title: "Tell us the role", body: "Share the tasks and hours in a 2-minute request." },
-                  { title: "Meet your match", body: "We shortlist one vetted VA and you interview them." },
-                  { title: "Start in days", body: "They plug into your tools. We handle billing and support." },
-                ]}
-              />
+            <div className="mt-8 flex flex-wrap gap-3">
+              <ButtonLink href="/hire" variant="brand" withArrow>
+                Hire Talent
+              </ButtonLink>
+              <ButtonLink href="/how-it-works" variant="outline">
+                See the full process
+              </ButtonLink>
             </div>
-            <ButtonLink href="/for-employers" variant="brand" className="mt-8" withArrow>
-              For employers
-            </ButtonLink>
           </Reveal>
 
           <Reveal delay={0.1}>
-            <SectionHeading eyebrow="For VAs" title="Find work worth keeping" tone="talent" />
-            <div className="mt-8">
-              <StepList
-                tone="talent"
-                steps={[
-                  { title: "Apply & get vetted", body: "Build a profile and pass a skills assessment — free, always." },
-                  { title: "Get matched", body: "We connect you with businesses that fit your skills and hours." },
-                  { title: "Grow with support", body: "Steady clients, on-time pay, and a team that has your back." },
-                ]}
-              />
-            </div>
-            <ButtonLink href="/for-vas" variant="talent" className="mt-8" withArrow>
-              For VAs
-            </ButtonLink>
+            <StepList
+              tone="brand"
+              steps={[
+                { title: "Tell us the role", body: "Share the tasks, weekly hours, and tools in a 2-minute request." },
+                { title: "We source & vet", body: "We shortlist one vetted VA from our talent pool — or recruit for niche roles." },
+                { title: "Meet your match", body: "Interview your candidate within 72 hours. No résumé pile to sort." },
+                { title: "Start in days", body: "They plug into your tools. We handle contracts, billing, and support." },
+              ]}
+            />
           </Reveal>
         </div>
       </section>
@@ -211,18 +185,18 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ---------------- Testimonials (both audiences) ---------------- */}
+      {/* ---------------- Testimonials ---------------- */}
       <section className="container-hub py-16 sm:py-20">
         <Reveal>
           <SectionHeading
             align="center"
-            eyebrow="Proof, both sides"
-            title="Businesses and VAs, both better off"
+            eyebrow="Proof"
+            title="Businesses that stopped doing it all themselves"
             intro="Placeholder testimonials for this demo — real, attributed quotes would live here."
           />
         </Reveal>
         <Stagger className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {testimonials.slice(0, 6).map((t) => (
+          {testimonials.slice(0, 3).map((t) => (
             <StaggerItem key={t.name}>
               <TestimonialCard t={t} />
             </StaggerItem>
@@ -233,9 +207,9 @@ export default function HomePage() {
       {/* ---------------- Final CTA ---------------- */}
       <CTASection
         title="Ready to make your match?"
-        body="Whether you're hiring or looking for work, your next step takes two minutes."
+        body="Tell us what you need help with. Submitting a hiring request takes about two minutes."
         primary={{ label: "Hire Talent", href: "/hire" }}
-        secondary={{ label: "Find Work", href: "/apply" }}
+        secondary={{ label: "Talk to us", href: "/contact" }}
         microcopy={
           site.onboardingSlotsLeft != null
             ? `Only ${site.onboardingSlotsLeft} onboarding slots left this month · No card required`

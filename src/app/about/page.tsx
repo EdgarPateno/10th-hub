@@ -8,7 +8,7 @@ import { SectionHeading } from "@/components/ui";
 export const metadata: Metadata = {
   title: "About 10th HUB",
   description:
-    "10th HUB is a managed VA marketplace built to serve both sides fairly — vetted talent for businesses, and legitimate, well-paid remote work for skilled virtual assistants.",
+    "10th HUB is a managed VA marketplace for growing businesses. We vet the talent, make the match, and stay involved — so you get reliable support and a match that lasts.",
 };
 
 export default function AboutPage() {
@@ -17,7 +17,7 @@ export default function AboutPage() {
       <PageHeader
         eyebrow="About"
         title="We built the hub we wished existed."
-        intro="10th HUB started with a simple frustration: hiring a VA meant sifting through hundreds of applicants, and being a VA meant fighting for scraps on race-to-the-bottom platforms. Both sides deserved better. So we built a managed marketplace that vets talent, makes the match, and stays involved — so businesses get reliability and VAs get respect."
+        intro="10th HUB started with a simple frustration: hiring a virtual assistant meant sifting through hundreds of cold applicants and hoping one of them worked out. Businesses deserved better than a search box. So we built a managed marketplace that vets the talent, makes the match, and stays involved long after day one."
       />
 
       {/* Mission */}
@@ -27,7 +27,7 @@ export default function AboutPage() {
             <SectionHeading
               eyebrow="Our mission"
               title="Make great remote work relationships the default"
-              intro="We measure success by matches that last — not sign-ups. That means we only win when a business keeps its VA and a VA keeps their client. It's why we vet carefully, price fairly, and support both sides long after the match is made."
+              intro="We measure success by matches that last — not sign-ups. We only win when you keep your VA, so we vet carefully, price fairly, and pay the talent well enough that they stay. Your match sticking around is the whole business model."
             />
           </div>
           <div className="glass rounded-3xl p-8">
@@ -53,7 +53,7 @@ export default function AboutPage() {
               ["You search hundreds of profiles", "We shortlist one vetted match"],
               ["Anyone can sign up", "Every VA is assessed & interviewed"],
               ["You're on your own after hiring", "A success manager backs every match"],
-              ["Rates race to the bottom", "Fair, transparent pay both ways"],
+              ["Rates race to the bottom", "Fair, transparent rates, no recruiting fees"],
             ].map(([a, b], i) => (
               <div key={i} className="grid grid-cols-2 border-t border-line text-sm">
                 <div className="bg-canvas px-5 py-4 text-slate-body">{a}</div>
@@ -87,8 +87,8 @@ export default function AboutPage() {
             </div>
             <blockquote className="mt-6 text-lg leading-relaxed text-ink">
               “We've hired VAs, been VAs, and built remote teams across time zones. 10th HUB is
-              the playbook we learned the hard way — vet well, match carefully, and support both
-              sides like the relationship matters. Because it does.”
+              the playbook we learned the hard way — vet well, match carefully, and stay involved
+              like the relationship matters. Because it does.”
             </blockquote>
             <p className="mt-4 text-sm text-slate-muted">— Placeholder founder note</p>
           </div>
@@ -96,10 +96,10 @@ export default function AboutPage() {
       </section>
 
       <CTASection
-        title="Join the hub"
-        body="Whether you're building a team or building your career, there's a place for you here."
+        title="Build your team with us"
+        body="Tell us the role you need filled and meet a vetted VA within 72 hours."
         primary={{ label: "Hire Talent", href: "/hire" }}
-        secondary={{ label: "Find Work", href: "/apply" }}
+        secondary={{ label: "Talk to us", href: "/contact" }}
       />
     </>
   );
