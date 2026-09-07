@@ -229,7 +229,6 @@ export type Testimonial = {
   quote: string;
   name: string;
   role: string;
-  audience: "employer" | "va";
   initials: string;
 };
 
@@ -240,7 +239,6 @@ export const testimonials: Testimonial[] = [
       "We had a vetted customer-service VA answering tickets within the week. Our first-response time dropped from two days to under three hours.",
     name: "Marina Ruiz",
     role: "Founder, Coastline Goods",
-    audience: "employer",
     initials: "MR",
   },
   {
@@ -248,46 +246,16 @@ export const testimonials: Testimonial[] = [
       "I stopped trying to be the bottleneck for everything. My VA runs my inbox and calendar, and I got my evenings back.",
     name: "David Chen",
     role: "Managing Partner, Northwind Advisory",
-    audience: "employer",
     initials: "DC",
-  },
-  {
-    quote:
-      "10th HUB matched me with a Shopify store owner who actually valued my work. Steady hours, on-time pay, and a team that has my back.",
-    name: "Grace Ocampo",
-    role: "Shopify Specialist",
-    audience: "va",
-    initials: "GO",
-  },
-  {
-    quote:
-      "The vetting was real — a skills test and a proper interview. When I got placed, the client already knew what I could do.",
-    name: "Samuel Adeyemi",
-    role: "Bookkeeping VA",
-    audience: "va",
-    initials: "SA",
   },
   {
     quote:
       "Our Amazon specialist cut our ad spend waste and rewrote our top listings. Sales are up and I'm not micromanaging.",
     name: "Priya Nair",
     role: "Owner, Lumen Home",
-    audience: "employer",
     initials: "PN",
   },
-  {
-    quote:
-      "I was tired of gig platforms and race-to-the-bottom rates. Here I have one long-term client and support when I need it.",
-    name: "Josephine Mwangi",
-    role: "Ecommerce Manager",
-    audience: "va",
-    initials: "JM",
-  },
 ];
-
-export function testimonialsFor(audience: "employer" | "va") {
-  return testimonials.filter((t) => t.audience === audience);
-}
 
 // -----------------------------------------------------------------------------
 
@@ -317,33 +285,6 @@ export const employerFaqs: FaqItem[] = [
   {
     q: "Do I need to handle payroll or contracts?",
     a: "No. Billing, contracts, and payments run through 10th HUB. You get one monthly invoice.",
-  },
-];
-
-export const vaFaqs: FaqItem[] = [
-  {
-    q: "Does it cost anything to apply?",
-    a: "No. Applying and getting vetted is always free for VAs. We're paid by the businesses that hire, never by you.",
-  },
-  {
-    q: "What kind of work and pay can I expect?",
-    a: "Long-term, part- or full-time remote roles with vetted businesses — not one-off gigs. Rates depend on your skills and experience, and we're transparent about the range before you interview.",
-  },
-  {
-    q: "How does the vetting process work?",
-    a: "You'll complete a short profile, a skills assessment for your category, and a live interview. Once approved, we match you to roles that fit your skills and availability.",
-  },
-  {
-    q: "Will I get support once I'm placed?",
-    a: "Yes. You get a dedicated success manager, a community of other VAs, and help resolving anything with a client. You're never on your own.",
-  },
-  {
-    q: "How soon could I start working?",
-    a: "It varies by demand for your skills, but many approved VAs are matched within a few weeks. Keeping your profile and availability current speeds this up.",
-  },
-  {
-    q: "What if I have skills outside your listed categories?",
-    a: "Apply anyway and pick 'Other.' We regularly place social media managers, video editors, project managers, and more.",
   },
 ];
 

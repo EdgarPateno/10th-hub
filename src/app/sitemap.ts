@@ -7,7 +7,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
     "",
     "/for-employers",
-    "/for-vas",
     "/services",
     "/how-it-works",
     "/pricing",
@@ -15,7 +14,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/case-studies",
     "/faq",
     "/hire",
-    "/apply",
     "/contact",
     "/resources",
   ].map((path) => ({

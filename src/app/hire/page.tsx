@@ -3,7 +3,7 @@ import { HireForm } from "@/components/forms/HireForm";
 import { TrustRow } from "@/components/blocks";
 import { TestimonialCard } from "@/components/TestimonialCard";
 import { Eyebrow, CheckItem } from "@/components/ui";
-import { testimonialsFor } from "@/lib/content";
+import { testimonials } from "@/lib/content";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 };
 
 export default function HirePage() {
-  const proof = testimonialsFor("employer")[0];
+  const proof = testimonials[0];
   return (
     <section className="container-hub py-14 sm:py-16">
       <div className="grid gap-12 lg:grid-cols-[1fr_1.05fr] lg:gap-16">

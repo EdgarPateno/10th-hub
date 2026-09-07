@@ -16,31 +16,34 @@ export const site = {
 
 export type NavLink = { label: string; href: string };
 
+// Client-only navigation. Every audience on this site is a business hiring a VA,
+// so the nav no longer splits by audience — it splits by decision stage:
+// what we do -> how it works -> what it costs -> proof.
 export const primaryNav: NavLink[] = [
-  { label: "For Employers", href: "/for-employers" },
-  { label: "For VAs", href: "/for-vas" },
+  { label: "Why 10th HUB", href: "/for-employers" },
   { label: "Services", href: "/services" },
   { label: "How it works", href: "/how-it-works" },
   { label: "Pricing", href: "/pricing" },
   { label: "Case studies", href: "/case-studies" },
 ];
 
+// NOTE: Footer.tsx lays these out in a fixed 4-column grid
+// (brand block + 3 link columns), so keep this at exactly three columns.
 export const footerNav: { title: string; links: NavLink[] }[] = [
   {
     title: "Hire talent",
     links: [
-      { label: "For employers", href: "/for-employers" },
       { label: "Browse services", href: "/services" },
+      { label: "How it works", href: "/how-it-works" },
       { label: "Pricing & packages", href: "/pricing" },
       { label: "Hire a VA", href: "/hire" },
     ],
   },
   {
-    title: "Find work",
+    title: "Why 10th HUB",
     links: [
-      { label: "For VAs", href: "/for-vas" },
-      { label: "How applying works", href: "/how-it-works" },
-      { label: "Apply as a VA", href: "/apply" },
+      { label: "How we vet talent", href: "/for-employers" },
+      { label: "Case studies", href: "/case-studies" },
       { label: "Resources", href: "/resources" },
     ],
   },
@@ -48,7 +51,6 @@ export const footerNav: { title: string; links: NavLink[] }[] = [
     title: "Company",
     links: [
       { label: "About", href: "/about" },
-      { label: "Case studies", href: "/case-studies" },
       { label: "FAQ", href: "/faq" },
       { label: "Contact", href: "/contact" },
     ],

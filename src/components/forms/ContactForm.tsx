@@ -56,7 +56,7 @@ export function ContactForm() {
         <Select id="c-topic" name="topic" value={data.topic} onChange={set("topic")}>
           <option value="">Select a topic…</option>
           <option>Hiring a VA</option>
-          <option>Applying as a VA</option>
+          <option>Pricing &amp; packages</option>
           <option>Partnerships</option>
           <option>Something else</option>
         </Select>

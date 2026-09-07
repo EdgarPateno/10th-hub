@@ -2,10 +2,6 @@ import type { Testimonial } from "@/lib/content";
 import { StarRow } from "./ui";
 
 export function TestimonialCard({ t }: { t: Testimonial }) {
-  const ring =
-    t.audience === "employer"
-      ? "bg-brand-50 text-brand"
-      : "bg-talent-50 text-talent-700";
   return (
     <figure className="card flex h-full flex-col p-6">
       <StarRow />
@@ -14,7 +10,7 @@ export function TestimonialCard({ t }: { t: Testimonial }) {
       </blockquote>
       <figcaption className="mt-5 flex items-center gap-3 border-t border-line pt-4">
         <span
-          className={`grid h-10 w-10 shrink-0 place-items-center rounded-full text-sm font-bold ${ring}`}
+          className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-brand-50 text-sm font-bold text-brand"
           aria-hidden="true"
         >
           {t.initials}
