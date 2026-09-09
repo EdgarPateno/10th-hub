@@ -30,16 +30,16 @@ export function HubGraphic({ className }: { className?: string }) {
     >
       <defs>
         <linearGradient id="hubCore" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor="#2557E6" />
-          <stop offset="1" stopColor="#1A3EA8" />
+          <stop offset="0" stopColor="#4C8BFF" />
+          <stop offset="1" stopColor="#1C5FD6" />
         </linearGradient>
         <linearGradient id="lineL" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0" stopColor="#2557E6" stopOpacity="0.15" />
-          <stop offset="1" stopColor="#2557E6" stopOpacity="0.7" />
+          <stop offset="0" stopColor="#7DB0FF" stopOpacity="0.2" />
+          <stop offset="1" stopColor="#7DB0FF" stopOpacity="0.95" />
         </linearGradient>
         <linearGradient id="lineR" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0" stopColor="#FB6B4B" stopOpacity="0.7" />
-          <stop offset="1" stopColor="#FB6B4B" stopOpacity="0.15" />
+          <stop offset="0" stopColor="#FF8A6B" stopOpacity="0.95" />
+          <stop offset="1" stopColor="#FF8A6B" stopOpacity="0.2" />
         </linearGradient>
       </defs>
 
@@ -77,10 +77,10 @@ export function HubGraphic({ className }: { className?: string }) {
       {/* Employer nodes (blue) */}
       {employers.map((n, i) => (
         <g key={`e-${i}`} className="animate-pulse-node" style={{ animationDelay: `${i * 0.3}s` }}>
-          <circle cx={n.x} cy={n.y} r={n.r} fill="#EEF3FF" stroke="#2557E6" strokeWidth="1.6" />
+          <circle cx={n.x} cy={n.y} r={n.r} fill="#DCE9FF" stroke="#7DB0FF" strokeWidth="1.6" />
           <path
             d={`M${n.x - 4} ${n.y - 1}h8M${n.x - 4} ${n.y + 3}h8`}
-            stroke="#2557E6"
+            stroke="#1C5FD6"
             strokeWidth="1.4"
             strokeLinecap="round"
           />
@@ -90,14 +90,14 @@ export function HubGraphic({ className }: { className?: string }) {
       {/* VA skill nodes (coral) */}
       {vas.map((n, i) => (
         <g key={`v-${i}`} className="animate-pulse-node" style={{ animationDelay: `${i * 0.25 + 0.4}s` }}>
-          <circle cx={n.x} cy={n.y} r={n.r} fill="#FFF1EC" stroke="#FB6B4B" strokeWidth="1.6" />
+          <circle cx={n.x} cy={n.y} r={n.r} fill="#FFE0D5" stroke="#FF8A6B" strokeWidth="1.6" />
           <text
             x={n.x}
             y={n.y + 3}
             textAnchor="middle"
             fontSize="8"
             fontWeight="700"
-            fill="#CC3F1F"
+            fill="#B8381A"
             fontFamily="var(--font-display)"
           >
             {n.label}
@@ -106,7 +106,7 @@ export function HubGraphic({ className }: { className?: string }) {
       ))}
 
       {/* Central hub */}
-      <circle cx={hub.x} cy={hub.y} r={hub.r + 8} fill="#2557E6" opacity="0.08" />
+      <circle cx={hub.x} cy={hub.y} r={hub.r + 8} fill="#7DB0FF" opacity="0.18" />
       <circle cx={hub.x} cy={hub.y} r={hub.r} fill="url(#hubCore)" />
       <text
         x={hub.x}
@@ -142,14 +142,14 @@ export function HubMark({ className }: { className?: string }) {
       <rect width="32" height="32" rx="9" fill="url(#hubCore)" />
       <defs>
         <linearGradient id="markCore" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor="#2557E6" />
-          <stop offset="1" stopColor="#1A3EA8" />
+          <stop offset="0" stopColor="#4C8BFF" />
+          <stop offset="1" stopColor="#1C5FD6" />
         </linearGradient>
       </defs>
       <rect width="32" height="32" rx="9" fill="url(#markCore)" />
       <circle cx="16" cy="16" r="4.2" fill="#fff" />
       <circle cx="7" cy="16" r="2.1" fill="#DCE6FF" />
-      <circle cx="25" cy="16" r="2.1" fill="#FB6B4B" />
+      <circle cx="25" cy="16" r="2.1" fill="#FF8A6B" />
       <path d="M9 16h3M20 16h3" stroke="#DCE6FF" strokeWidth="1.4" strokeLinecap="round" />
     </svg>
   );

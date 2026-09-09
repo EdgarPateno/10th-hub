@@ -5,16 +5,27 @@
 :root {
   --font-display: "Plus Jakarta Sans", system-ui, sans-serif;
   --font-body: "Inter", system-ui, sans-serif;
+
+  /* The single deep royal blue the whole site sits on. Mirrors the `canvas`
+     token in tailwind.config.ts — kept here too so raw CSS (the ambient field,
+     the frosted surfaces) can reference it without a Tailwind round-trip. */
+  --ground: #063787;
+  --ground-deep: #02214f;
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
-    /* The base tint lives on <html> so it propagates to the viewport canvas.
-       <body> is then transparent, which lets the fixed z-index:-1 ambient
+    /* The base tint lives on <html> so it propagates to the viewport canvas —
+       overscroll at either end of the page stays blue instead of flashing
+       white. <body> is transparent, which lets the fixed z-index:-1 ambient
        field (Backdrop.tsx) paint ABOVE the canvas and below all content. */
     @apply bg-canvas;
+    /* Tells the UA to render form controls, scrollbars and the overscroll
+       gutter in their dark variants. Without this, native selects and
+       scrollbars stay light and break the theme. */
+    color-scheme: dark;
   }
   body {
     @apply text-slate-body font-sans antialiased;
@@ -28,12 +39,12 @@
   /* Visible keyboard focus everywhere (a11y) */
   :focus-visible {
     outline: none;
-    box-shadow: 0 0 0 3px rgba(37, 87, 230, 0.4);
+    box-shadow: 0 0 0 3px rgba(143, 187, 255, 0.6);
     border-radius: 4px;
   }
   ::selection {
-    background: #dce6ff;
-    color: #0b1220;
+    background: #8fbbff;
+    color: #063787;
   }
 }
 
@@ -53,21 +64,30 @@
   }
 
   /* ---------------------------------------------------------------
-     Frosted surfaces. Drop-in replacements for flat `bg-white` so the
-     ambient blue field reads through the page.
+     Frosted surfaces — the DARK inversion.
+
+     On a light theme these were white veils. On the blue ground the same
+     job (lift a panel off the background) is done by a *lighter blue* veil
+     plus a top-edge highlight, because a drop shadow reads as nothing
+     against a dark field. The highlight is what makes a card look raised.
      --------------------------------------------------------------- */
 
-  /* Card surface. Use instead of `.card` / `bg-white` on floating cards. */
+  /* Card surface. Drop-in replacement for flat `bg-white` on floating cards. */
   .glass,
   .card {
     @apply rounded-2xl;
-    background: rgba(255, 255, 255, 0.72);
-    border: 1px solid rgba(37, 87, 230, 0.1);
+    background: linear-gradient(
+      180deg,
+      rgba(143, 187, 255, 0.12) 0%,
+      rgba(143, 187, 255, 0.06) 100%
+    );
+    border: 1px solid rgba(255, 255, 255, 0.12);
     box-shadow:
-      0 1px 2px rgba(14, 27, 46, 0.04),
-      0 10px 30px rgba(14, 27, 46, 0.07);
-    backdrop-filter: blur(14px) saturate(1.35);
-    -webkit-backdrop-filter: blur(14px) saturate(1.35);
+      inset 0 1px 0 rgba(255, 255, 255, 0.10),
+      0 1px 2px rgba(0, 0, 0, 0.20),
+      0 12px 32px rgba(0, 0, 0, 0.26);
+    backdrop-filter: blur(14px) saturate(1.25);
+    -webkit-backdrop-filter: blur(14px) saturate(1.25);
   }
 
   /* Full-width translucent section band. Use instead of `bg-white` on
@@ -75,34 +95,36 @@
   .band {
     background: linear-gradient(
       180deg,
-      rgba(255, 255, 255, 0.62) 0%,
-      rgba(255, 255, 255, 0.40) 50%,
-      rgba(255, 255, 255, 0.62) 100%
+      rgba(143, 187, 255, 0.09) 0%,
+      rgba(143, 187, 255, 0.03) 50%,
+      rgba(143, 187, 255, 0.09) 100%
     );
-    backdrop-filter: blur(10px) saturate(1.2);
-    -webkit-backdrop-filter: blur(10px) saturate(1.2);
+    backdrop-filter: blur(10px) saturate(1.15);
+    -webkit-backdrop-filter: blur(10px) saturate(1.15);
   }
 
-  /* Browsers without backdrop-filter get an opaque, still-legible surface. */
+  /* Browsers without backdrop-filter get an opaque, still-legible surface.
+     Both fall back to a solid blue slightly lighter than the ground. */
   @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
     .glass,
     .card {
-      background: rgba(255, 255, 255, 0.94);
+      background: #0c4291;
     }
     .band {
-      background: rgba(255, 255, 255, 0.94);
+      background: #093d86;
     }
   }
 
   /* ---------------------------------------------------------------
-     Dark animated blue mesh. For the navy CTA band + footer.
-     Replaces flat `bg-navy`; keeps its own children above the mesh.
+     Dark animated blue mesh. For the CTA band, scarcity bar + footer.
+     Now that the ground is blue this reads as RECESSED, not raised —
+     it is the darkest surface on the page.
      --------------------------------------------------------------- */
   .mesh-navy {
     position: relative;
     isolation: isolate;
     overflow: hidden;
-    background-color: #0e1b2e;
+    background-color: #021a44;
     color: #ffffff;
   }
   .mesh-navy > * {
@@ -121,8 +143,8 @@
   }
   .mesh-navy::before {
     background:
-      radial-gradient(38% 46% at 22% 28%, rgba(37, 87, 230, 0.55) 0%, rgba(37, 87, 230, 0) 70%),
-      radial-gradient(34% 40% at 78% 22%, rgba(130, 169, 242, 0.3) 0%, rgba(130, 169, 242, 0) 70%);
+      radial-gradient(38% 46% at 22% 28%, rgba(37, 111, 234, 0.55) 0%, rgba(37, 111, 234, 0) 70%),
+      radial-gradient(34% 40% at 78% 22%, rgba(125, 176, 255, 0.26) 0%, rgba(125, 176, 255, 0) 70%);
     /* Base = the reduced-motion resting state; matches the 0% keyframe. */
     transform: translate3d(0, 0, 0) scale(1);
     opacity: 0.55;
@@ -130,8 +152,8 @@
   }
   .mesh-navy::after {
     background:
-      radial-gradient(40% 44% at 68% 78%, rgba(26, 62, 168, 0.6) 0%, rgba(26, 62, 168, 0) 72%),
-      radial-gradient(26% 30% at 12% 82%, rgba(251, 107, 75, 0.16) 0%, rgba(251, 107, 75, 0) 70%);
+      radial-gradient(40% 44% at 68% 78%, rgba(10, 70, 150, 0.7) 0%, rgba(10, 70, 150, 0) 72%),
+      radial-gradient(26% 30% at 12% 82%, rgba(255, 138, 107, 0.14) 0%, rgba(255, 138, 107, 0) 70%);
     transform: translate3d(0, 0, 0) scale(1.04);
     opacity: 0.5;
     animation: drift-b 73s ease-in-out infinite;
@@ -223,6 +245,9 @@
    ~0ms with no fill-mode, so reduced-motion users land back on that
    base rule: a still, deliberately composed gradient — not a blank or
    half-transformed layer.
+
+   On the dark theme the blooms LIGHTEN the ground (they used to darken
+   a near-white one), and a vignette closes the edges back down.
    ================================================================= */
 
 .hub-field {
@@ -234,7 +259,7 @@
      extend the document box and create a horizontal scrollbar. */
   overflow: hidden;
   contain: layout paint style;
-  background-color: #e6eefa;
+  background-color: var(--ground);
 }
 
 .hub-field__bloom {
@@ -245,7 +270,7 @@
   backface-visibility: hidden;
 }
 
-/* Deep brand blue — top-left anchor */
+/* Bright royal blue — top-left anchor */
 .hub-field__bloom--a {
   top: -28vmax;
   left: -22vmax;
@@ -253,16 +278,16 @@
   height: 78vmax;
   background: radial-gradient(
     closest-side,
-    rgba(26, 62, 168, 0.30) 0%,
-    rgba(26, 62, 168, 0.15) 45%,
-    rgba(26, 62, 168, 0) 100%
+    rgba(28, 110, 225, 0.34) 0%,
+    rgba(28, 110, 225, 0.16) 45%,
+    rgba(28, 110, 225, 0) 100%
   );
   transform: translate3d(0, 0, 0) scale(1);
   opacity: 0.72;
   animation: drift-a 52s ease-in-out infinite;
 }
 
-/* Core brand blue — right shoulder */
+/* Core action blue — right shoulder */
 .hub-field__bloom--b {
   top: -18vmax;
   right: -26vmax;
@@ -270,9 +295,9 @@
   height: 70vmax;
   background: radial-gradient(
     closest-side,
-    rgba(37, 87, 230, 0.26) 0%,
-    rgba(37, 87, 230, 0.12) 48%,
-    rgba(37, 87, 230, 0) 100%
+    rgba(30, 105, 230, 0.32) 0%,
+    rgba(30, 105, 230, 0.14) 48%,
+    rgba(30, 105, 230, 0) 100%
   );
   transform: translate3d(0, 0, 0) scale(1.04);
   opacity: 0.68;
@@ -287,16 +312,16 @@
   height: 82vmax;
   background: radial-gradient(
     closest-side,
-    rgba(130, 169, 242, 0.38) 0%,
-    rgba(130, 169, 242, 0.16) 50%,
-    rgba(130, 169, 242, 0) 100%
+    rgba(70, 140, 245, 0.22) 0%,
+    rgba(70, 140, 245, 0.09) 50%,
+    rgba(70, 140, 245, 0) 100%
   );
   transform: translate3d(0, 0, 0) scale(0.96);
   opacity: 0.6;
   animation: drift-c 44s ease-in-out infinite;
 }
 
-/* Barely-there coral — nods at the second (talent) audience */
+/* Barely-there coral — keeps the second brand accent alive in the field */
 .hub-field__bloom--coral {
   bottom: -30vmax;
   right: -20vmax;
@@ -304,9 +329,9 @@
   height: 58vmax;
   background: radial-gradient(
     closest-side,
-    rgba(251, 107, 75, 0.08) 0%,
-    rgba(251, 107, 75, 0.03) 50%,
-    rgba(251, 107, 75, 0) 100%
+    rgba(255, 138, 107, 0.10) 0%,
+    rgba(255, 138, 107, 0.04) 50%,
+    rgba(255, 138, 107, 0) 100%
   );
   transform: translate3d(0, 0, 0) scale(1);
   opacity: 0.34;
@@ -318,8 +343,8 @@
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(to right, rgba(37, 87, 230, 0.07) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(37, 87, 230, 0.07) 1px, transparent 1px);
+    linear-gradient(to right, rgba(160, 200, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(160, 200, 255, 0.08) 1px, transparent 1px);
   background-size: 72px 72px;
   /* Fade the grid out toward the edges so it reads as texture, not a table */
   -webkit-mask-image: radial-gradient(115% 90% at 50% 22%, #000 0%, transparent 78%);
@@ -330,21 +355,51 @@
 .hub-field__grain {
   position: absolute;
   inset: 0;
-  opacity: 0.028;
+  opacity: 0.035;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* Top wash: keeps the very top of the page bright so the fixed NavBar,
-   the scarcity banner and h1 copy sit on near-white. Protects contrast. */
+/* Edge vignette. The inverse of the old top "wash": instead of keeping the
+   top near-white, it closes the corners back down to `--ground-deep` so the
+   blooms read as light coming from inside the page. Also protects the fixed
+   NavBar and the mobile CTA bar, which sit over the brightest bloom. */
 .hub-field__wash {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.55) 0%,
-    rgba(255, 255, 255, 0.14) 22%,
-    rgba(255, 255, 255, 0) 44%
-  );
+  background:
+    radial-gradient(
+      130% 100% at 50% 30%,
+      rgba(2, 33, 79, 0) 34%,
+      rgba(2, 33, 79, 0.62) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(2, 33, 79, 0.5) 0%,
+      rgba(2, 33, 79, 0) 18%
+    );
+}
+
+/* =================================================================
+   NODE FIELD  (src/components/NodeField.tsx)
+   The canvas the particle network draws into. Sits in the same fixed
+   z-index:-1 plane as the ambient field, immediately above it, so it
+   is behind every piece of page content and cannot take a click.
+   ================================================================= */
+.node-field {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  display: block;
+  width: 100%;
+  height: 100%;
+  /* Fades in once the first frame is painted, so there is no pop of
+     half-drawn nodes on load. Opacity only — composited. */
+  opacity: 0;
+  transition: opacity 900ms ease-out;
+}
+.node-field[data-ready="true"] {
+  opacity: 1;
 }
 
 /* Respect reduced motion for all decorative animation */

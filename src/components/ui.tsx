@@ -65,13 +65,14 @@ export function Badge({
   tone?: "neutral" | "verified" | "brand" | "talent";
   className?: string;
 }) {
-  // Backgrounds are kept opaque enough to hold AA contrast where they now sit
-  // on the drifting blue field rather than on flat white.
+  // Tints, not fills: each chip is the accent at low alpha over the blue
+  // ground, with the accent itself as the text. Checked for AA against the
+  // resulting surface rather than against the flat ground.
   const tones = {
-    neutral: "bg-white/75 text-slate-body border-line backdrop-blur-sm",
-    verified: "bg-green-50/90 text-verified border-green-100 backdrop-blur-sm",
-    brand: "bg-brand-50/90 text-brand border-brand-100 backdrop-blur-sm",
-    talent: "bg-talent-50/90 text-talent-700 border-talent-100 backdrop-blur-sm",
+    neutral: "bg-white/10 text-slate-body border-line backdrop-blur-sm",
+    verified: "bg-verified/15 text-verified border-verified/35 backdrop-blur-sm",
+    brand: "bg-brand-50/80 text-brand border-brand/35 backdrop-blur-sm",
+    talent: "bg-talent/10 text-talent border-talent/40 backdrop-blur-sm",
   };
   return (
     <span
@@ -99,7 +100,7 @@ export function CheckItem({
     <li className="flex items-start gap-3">
       <span
         className={cn(
-          "mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full text-white",
+          "mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full text-navy",
           tone === "brand" ? "bg-brand" : "bg-talent"
         )}
       >

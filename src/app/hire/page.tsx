@@ -40,7 +40,7 @@ export default function HirePage() {
           </div>
 
           {site.onboardingSlotsLeft != null && (
-            <p className="mt-6 inline-flex rounded-full bg-talent-50 px-4 py-2 text-sm font-semibold text-talent-700">
+            <p className="mt-6 inline-flex rounded-full bg-talent/10 px-4 py-2 text-sm font-semibold text-talent ring-1 ring-talent/35">
               Only {site.onboardingSlotsLeft} onboarding slots left this month
             </p>
           )}

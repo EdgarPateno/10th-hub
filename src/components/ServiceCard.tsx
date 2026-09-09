@@ -16,7 +16,7 @@ export function ServiceCard({ service }: { service: Service }) {
         className="pointer-events-none absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-brand/[0.09] to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
       />
 
-      <span className="relative grid h-12 w-12 place-items-center rounded-xl bg-brand-50 text-brand transition-colors duration-300 group-hover:bg-brand group-hover:text-white">
+      <span className="relative grid h-12 w-12 place-items-center rounded-xl bg-brand-50 text-brand transition-colors duration-300 group-hover:bg-action group-hover:text-white">
         <ServiceIcon name={service.icon} className="h-6 w-6" />
       </span>
       <h3 className="relative mt-4 text-lg font-bold text-ink">{service.name}</h3>

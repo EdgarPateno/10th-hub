@@ -3,7 +3,7 @@
 const cn = (...c: (string | false | undefined)[]) => c.filter(Boolean).join(" ");
 
 const inputBase =
-  "w-full min-h-[48px] rounded-xl border bg-white px-4 py-3 text-[15px] text-ink placeholder:text-slate-muted/70 transition-colors focus-visible:border-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/30";
+  "w-full min-h-[48px] rounded-xl border bg-navy/45 px-4 py-3 text-[15px] text-ink backdrop-blur-sm placeholder:text-slate-muted/70 transition-colors focus-visible:border-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/40";
 
 export function Field({
   label,
@@ -29,7 +29,7 @@ export function Field({
       {children}
       {hint && !error && <p className="mt-1.5 text-[13px] text-slate-muted">{hint}</p>}
       {error && (
-        <p className="mt-1.5 text-[13px] font-medium text-red-600" role="alert">
+        <p className="mt-1.5 text-[13px] font-medium text-red-300" role="alert">
           {error}
         </p>
       )}
@@ -43,7 +43,7 @@ export function TextInput({
 }: React.InputHTMLAttributes<HTMLInputElement> & { invalid?: boolean }) {
   return (
     <input
-      className={cn(inputBase, invalid ? "border-red-400" : "border-line")}
+      className={cn(inputBase, invalid ? "border-red-400" : "border-white/20")}
       {...props}
     />
   );
@@ -55,7 +55,7 @@ export function TextArea({
 }: React.TextareaHTMLAttributes<HTMLTextAreaElement> & { invalid?: boolean }) {
   return (
     <textarea
-      className={cn(inputBase, "min-h-[120px] resize-y", invalid ? "border-red-400" : "border-line")}
+      className={cn(inputBase, "min-h-[120px] resize-y", invalid ? "border-red-400" : "border-white/20")}
       {...props}
     />
   );
@@ -108,7 +108,7 @@ export function RadioCards({
           <label
             key={opt.value}
             className={cn(
-              "flex cursor-pointer items-start gap-3 rounded-xl border bg-white p-4 transition-all hover:border-slate-muted",
+              "flex cursor-pointer items-start gap-3 rounded-xl border bg-navy/40 p-4 backdrop-blur-sm transition-all hover:border-slate-muted",
               checked ? active : "border-line"
             )}
           >
@@ -172,7 +172,7 @@ export function FormSuccess({
   body: string;
   tone?: "brand" | "talent";
 }) {
-  const ring = tone === "brand" ? "bg-brand text-white" : "bg-talent text-white";
+  const ring = tone === "brand" ? "bg-action text-white" : "bg-talent text-navy";
   return (
     <div className="card p-8 text-center" role="status">
       <div className={cn("mx-auto grid h-14 w-14 place-items-center rounded-full", ring)}>

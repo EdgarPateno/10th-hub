@@ -42,7 +42,7 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
           <div className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
             <div>
               <div className="mb-4 flex items-center gap-3">
-                <span className="grid h-14 w-14 place-items-center rounded-2xl bg-brand text-white">
+                <span className="grid h-14 w-14 place-items-center rounded-2xl bg-action text-white">
                   <ServiceIcon name={service.icon} className="h-7 w-7" />
                 </span>
                 <Badge tone="brand">from {service.startingRate}</Badge>

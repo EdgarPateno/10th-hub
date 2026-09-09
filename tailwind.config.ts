@@ -1,49 +1,92 @@
 import type { Config } from "tailwindcss";
 
+/**
+ * DARK BLUE THEME.
+ *
+ * The whole site sits on one deep royal-blue ground (`canvas`), so these are
+ * SEMANTIC tokens, not literal ones: `ink` is "the strongest text colour",
+ * not "black"; `line` is "a hairline", not "light grey". Components reference
+ * the semantic name, which is why flipping light -> dark happens here instead
+ * of across 200 utility classes in 29 files.
+ *
+ * Every foreground below was checked against the ground (#063787) and against
+ * the frosted card surface (~#0C4291) for WCAG AA. See the note on each token.
+ */
 const config: Config = {
   content: ["./src/**/*.{ts,tsx,mdx}"],
   theme: {
     extend: {
       colors: {
-        // Ground
+        // ---- Ground -------------------------------------------------------
+        // The page base. Sampled from the reference art direction: a deep
+        // royal blue that the ambient blooms lift toward #0E4390 in the
+        // middle and vignette down toward #02214F at the edges.
+        canvas: "#063787",
+
+        // Darker-than-ground band. Used by `.mesh-navy` (CTA band, footer,
+        // scarcity bar) so those read as RECESSED against the ground now that
+        // the ground itself is blue. Under a light theme this was the only
+        // dark surface; now it is the darkest of several.
         navy: {
-          DEFAULT: "#0E1B2E",
-          800: "#13263E",
-          700: "#1B324F",
-          600: "#274063",
+          DEFAULT: "#021A44",
+          800: "#032357",
+          700: "#053473",
+          600: "#0A4696",
         },
-        // Employer audience = blue
+
+        // ---- Brand blue ---------------------------------------------------
+        // NOTE the inverted scale. On a dark ground the DEFAULT has to be the
+        // *bright* value, because `text-brand` (30+ usages) must read against
+        // the blue. No single blue can be both legible as text on #063787
+        // (needs luminance >= 0.29) and hold white text as a button fill
+        // (needs <= 0.18) — those ranges do not overlap. So solid fills use
+        // `action` below instead, and `brand` is purely a foreground accent.
         brand: {
-          DEFAULT: "#2557E6",
-          600: "#1E49C8",
-          700: "#1A3EA8",
-          50: "#EEF3FF",
-          100: "#DCE6FF",
+          DEFAULT: "#8FBBFF", // 5.6:1 on ground — links, accents, icons
+          600: "#B3D2FF", // accent hover (lighter, not darker)
+          700: "#5B93F0", // accent pressed
+          50: "#10469C", // dark chip fill; `text-brand` on it = 4.5:1
+          100: "#D2E2FF", // light text on the navy meshes — 13:1
         },
-        // Talent / VA audience = coral
+
+        // Solid interactive fill. Deep enough to carry white text (5.7:1),
+        // bright enough to read as the primary action on the blue ground.
+        action: {
+          DEFAULT: "#1C5FD6",
+          hover: "#2C71EA",
+          ring: "#7DB0FF",
+        },
+
+        // ---- Talent / coral accent ---------------------------------------
+        // White on coral is 2.3:1 at any usable coral, so the solid `talent`
+        // button puts NAVY text on the fill (6.2:1) rather than white.
         talent: {
-          DEFAULT: "#FB6B4B",
-          600: "#EE532F",
-          700: "#B8381A",
-          50: "#FFF1EC",
-          100: "#FFE0D5",
+          DEFAULT: "#FF9B7E", // 5.4:1 on ground
+          600: "#FFA189",
+          700: "#FFB49F",
+          50: "#5A2314", // dark chip fill
+          100: "#FFD8CB",
         },
-        // Light-blue atmospheric field (ambient backdrop + frosted surfaces)
+
+        // ---- Atmosphere ---------------------------------------------------
+        // Was the light-blue field. Now the low-lift surfaces that sit just
+        // above the ground: nav hover, subtle wells. 200 is a hairline.
         azure: {
-          50: "#F3F7FF",
-          100: "#E6EEFE",
-          200: "#CFDFFC",
-          300: "#AFC9F8",
-          400: "#82A9F2",
+          50: "#072F6E",
+          100: "#0D3C87",
+          200: "rgba(255,255,255,0.14)",
+          300: "#5E8FD6",
+          400: "#89B2EF",
         },
-        ink: "#0B1220",
+
+        // ---- Foreground ---------------------------------------------------
+        ink: "#F4F8FF", // headings — 10.4:1 on ground
         slate: {
-          body: "#334155",
-          muted: "#5A6B84",
+          body: "#C6D6F5", // body copy — 7.5:1
+          muted: "#A8BEE6", // secondary/meta — 5.9:1
         },
-        line: "#E3E8F0",
-        canvas: "#E6EEFA",
-        verified: "#16A34A",
+        line: "rgba(255,255,255,0.13)", // hairline on any blue surface
+        verified: "#4ADFA9", // 6.5:1 (the old #16A34A was 4.1:1 here)
       },
       fontFamily: {
         display: ["var(--font-display)", "system-ui", "sans-serif"],
@@ -56,16 +99,18 @@ const config: Config = {
         xl2: "1.25rem",
       },
       boxShadow: {
-        card: "0 1px 2px rgba(14,27,46,0.04), 0 8px 24px rgba(14,27,46,0.06)",
-        cardHover: "0 2px 4px rgba(14,27,46,0.06), 0 16px 40px rgba(14,27,46,0.12)",
-        focus: "0 0 0 3px rgba(37,87,230,0.35)",
+        // Shadows are near-black on a dark ground; the "lift" now comes from
+        // the border highlight in `.glass`, not from a soft grey drop.
+        card: "0 1px 2px rgba(0,0,0,0.20), 0 8px 24px rgba(0,0,0,0.24)",
+        cardHover: "0 2px 4px rgba(0,0,0,0.24), 0 18px 44px rgba(0,0,0,0.34)",
+        focus: "0 0 0 3px rgba(125,176,255,0.45)",
       },
       keyframes: {
         "fade-up": {
           "0%": { opacity: "0", transform: "translateY(12px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
-        "dash": {
+        dash: {
           to: { strokeDashoffset: "0" },
         },
         "pulse-node": {

@@ -51,7 +51,7 @@ export default function ForEmployersPage() {
                 "Great hires who ghost after two weeks",
               ].map((t) => (
                 <li key={t} className="flex items-start gap-3 text-slate-body">
-                  <span className="mt-1 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-red-50 text-red-500">
+                  <span className="mt-1 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-red-400/15 text-red-300">
                     <Icon.close className="h-3.5 w-3.5" />
                   </span>
                   {t}

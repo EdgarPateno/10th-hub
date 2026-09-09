@@ -47,7 +47,7 @@ export default function AboutPage() {
           <div className="mx-auto mt-10 max-w-3xl overflow-hidden rounded-2xl border border-line">
             <div className="grid grid-cols-2 bg-navy text-sm font-semibold text-white">
               <div className="px-5 py-3">Generic freelance platforms</div>
-              <div className="bg-brand px-5 py-3">10th HUB</div>
+              <div className="bg-action px-5 py-3">10th HUB</div>
             </div>
             {[
               ["You search hundreds of profiles", "We shortlist one vetted match"],
@@ -56,7 +56,7 @@ export default function AboutPage() {
               ["Rates race to the bottom", "Fair, transparent rates, no recruiting fees"],
             ].map(([a, b], i) => (
               <div key={i} className="grid grid-cols-2 border-t border-line text-sm">
-                <div className="bg-canvas px-5 py-4 text-slate-body">{a}</div>
+                <div className="bg-white/[0.04] px-5 py-4 text-slate-body">{a}</div>
                 <div className="bg-brand-50/50 px-5 py-4 font-medium text-ink">{b}</div>
               </div>
             ))}
@@ -77,7 +77,7 @@ export default function AboutPage() {
         <div className="container-hub py-16 sm:py-20">
           <div className="mx-auto max-w-3xl rounded-3xl border border-line bg-canvas p-8 sm:p-10">
             <div className="flex items-center gap-4">
-              <span className="grid h-14 w-14 place-items-center rounded-full bg-brand text-lg font-bold text-white">
+              <span className="grid h-14 w-14 place-items-center rounded-full bg-action text-lg font-bold text-white">
                 TH
               </span>
               <div>

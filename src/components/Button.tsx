@@ -5,14 +5,17 @@ type Variant = "brand" | "talent" | "dark" | "outline" | "ghost";
 type Size = "sm" | "md" | "lg";
 
 const variants: Record<Variant, string> = {
+  // `bg-brand` is the BRIGHT accent on this theme and cannot carry white
+  // text (2.7:1). Solid actions use `action`, which is deep enough (5.7:1).
   brand:
-    "bg-brand text-white hover:bg-brand-600 shadow-sm hover:shadow-cardHover focus-visible:ring-brand",
+    "bg-action text-white hover:bg-action-hover shadow-sm hover:shadow-cardHover focus-visible:ring-action-ring",
+  // White on any usable coral is 2.3:1, so the coral fill takes navy text.
   talent:
-    "bg-talent text-white hover:bg-talent-600 shadow-sm hover:shadow-cardHover focus-visible:ring-talent",
-  dark: "bg-navy text-white hover:bg-navy-700 shadow-sm",
+    "bg-talent text-navy hover:bg-talent-600 shadow-sm hover:shadow-cardHover focus-visible:ring-talent",
+  dark: "bg-navy text-white hover:bg-navy-800 shadow-sm ring-1 ring-white/10",
   outline:
-    "border border-line bg-white text-ink hover:border-brand hover:text-brand",
-  ghost: "text-ink hover:bg-brand-50 hover:text-brand",
+    "border border-white/25 bg-white/[0.06] text-ink backdrop-blur-sm hover:border-brand hover:bg-white/[0.12] hover:text-brand",
+  ghost: "text-ink hover:bg-white/10 hover:text-brand",
 };
 
 const sizes: Record<Size, string> = {

@@ -74,8 +74,8 @@ export function StepList({
 }) {
   const badge =
     tone === "brand"
-      ? "bg-brand text-white ring-brand-100"
-      : "bg-talent text-white ring-talent-100";
+      ? "bg-action text-white ring-brand/25"
+      : "bg-talent text-navy ring-talent/25";
   const rail = tone === "brand" ? "bg-brand-100" : "bg-talent-100";
   return (
     <ol className="relative space-y-8">

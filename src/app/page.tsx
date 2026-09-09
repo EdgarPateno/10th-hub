@@ -1,4 +1,5 @@
 import { ButtonLink } from "@/components/Button";
+import { NodeField } from "@/components/NodeField";
 import { HubGraphic } from "@/components/HubGraphic";
 import { ServiceCard } from "@/components/ServiceCard";
 import { TestimonialCard } from "@/components/TestimonialCard";
@@ -13,10 +14,18 @@ import { site } from "@/lib/site";
 export default function HomePage() {
   return (
     <>
+      {/*
+        Interactive particle network across the whole homepage. Fixed,
+        aria-hidden, `pointer-events: none`, and painted in the same
+        z-index:-1 plane as the ambient field — so it sits behind every
+        section below without affecting layout or hit-testing.
+      */}
+      <NodeField />
+
       {/* ---------------- Hero (signature) ----------------
           No opaque background: the hero sits directly on the ambient blue
           field. One orchestrated entrance, cascading down the left column. */}
-      <section className="relative overflow-hidden border-b border-line/70">
+      <section className="relative overflow-hidden border-b border-white/[0.07]">
         <div className="container-hub grid items-center gap-12 py-14 lg:grid-cols-[1.05fr_0.95fr] lg:py-20">
           <div>
             <Reveal>
@@ -63,7 +72,7 @@ export default function HomePage() {
 
           {/* Signature hub graphic */}
           <Reveal delay={0.16} className="relative">
-            <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_50%_45%,rgba(37,87,230,0.10),transparent_65%)]" />
+            <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_50%_45%,rgba(125,176,255,0.14),transparent_65%)]" />
             <HubGraphic className="mx-auto w-full max-w-lg" />
             <div className="mx-auto mt-2 flex max-w-lg items-center justify-between px-4 text-xs font-semibold uppercase tracking-wider">
               <span className="text-brand">Businesses</span>
@@ -104,7 +113,7 @@ export default function HomePage() {
           ].map((f) => (
             <StaggerItem key={f.title}>
               <div className="glass h-full p-6">
-                <span className="grid h-11 w-11 place-items-center rounded-xl bg-navy text-white">
+                <span className="grid h-11 w-11 place-items-center rounded-xl bg-action text-white">
                   <f.icon className="h-5 w-5" />
                 </span>
                 <h3 className="mt-4 text-lg font-bold text-ink">{f.title}</h3>

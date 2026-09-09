@@ -33,7 +33,7 @@ export function NavBar() {
       className={cn(
         "sticky top-0 z-50 border-b transition-colors duration-200",
         scrolled
-          ? "border-azure-200 bg-white/75 backdrop-blur-xl backdrop-saturate-150"
+          ? "border-azure-200 bg-navy/70 backdrop-blur-xl backdrop-saturate-150"
           : "border-transparent bg-transparent"
       )}
     >
@@ -56,7 +56,7 @@ export function NavBar() {
                   "rounded-full px-3.5 py-2 text-sm font-medium transition-colors",
                   isActive(link.href)
                     ? "bg-brand-50 text-brand"
-                    : "text-slate-body hover:bg-azure-100 hover:text-ink"
+                    : "text-slate-body hover:bg-white/10 hover:text-ink"
                 )}
               >
                 {link.label}
@@ -78,7 +78,7 @@ export function NavBar() {
         {/* Mobile toggle */}
         <button
           type="button"
-          className="grid h-11 w-11 place-items-center rounded-xl text-ink hover:bg-azure-100 lg:hidden"
+          className="grid h-11 w-11 place-items-center rounded-xl text-ink hover:bg-white/10 lg:hidden"
           aria-expanded={open}
           aria-controls="mobile-menu"
           aria-label={open ? "Close menu" : "Open menu"}
