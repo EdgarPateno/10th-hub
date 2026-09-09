@@ -84,7 +84,7 @@ export const services: Service[] = [
       "Travel & scheduling",
       "Research & reporting",
     ],
-    startingRate: "$7/hr",
+    startingRate: "$8/hr",
   },
   {
     slug: "web-developer-designer",
@@ -104,7 +104,7 @@ export const services: Service[] = [
       "UI design in Figma",
       "Bug fixes & maintenance",
     ],
-    startingRate: "$12/hr",
+    startingRate: "$15/hr",
   },
   {
     slug: "shopify-specialist",
@@ -124,7 +124,7 @@ export const services: Service[] = [
       "Product & collection uploads",
       "Conversion & speed tweaks",
     ],
-    startingRate: "$11/hr",
+    startingRate: "$15/hr",
   },
   {
     slug: "ecommerce-manager",
@@ -144,7 +144,7 @@ export const services: Service[] = [
       "Inventory coordination",
       "Sales & KPI reporting",
     ],
-    startingRate: "$13/hr",
+    startingRate: "$15/hr",
   },
   {
     slug: "amazon-specialist",
@@ -164,7 +164,7 @@ export const services: Service[] = [
       "Seller Central operations",
       "Reviews & feedback",
     ],
-    startingRate: "$12/hr",
+    startingRate: "$15/hr",
   },
   {
     slug: "bookkeeping",
@@ -184,7 +184,7 @@ export const services: Service[] = [
       "Invoicing & AP/AR",
       "Monthly P&L reports",
     ],
-    startingRate: "$10/hr",
+    startingRate: "$15/hr",
   },
   {
     slug: "all-other-va-services",

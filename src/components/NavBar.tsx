@@ -39,8 +39,8 @@ export function NavBar() {
     >
       <nav className="container-hub flex h-16 items-center justify-between gap-4" aria-label="Primary">
         <Link href="/" className="flex items-center gap-2.5" aria-label={`${site.name} home`}>
-          <HubMark className="h-8 w-8" />
-          <span className="font-display text-lg font-extrabold tracking-tight text-ink">
+          <HubMark className="h-10 w-10" />
+          <span className="font-display text-xl font-extrabold tracking-tight text-ink">
             10th<span className="text-brand"> HUB</span>
           </span>
         </Link>

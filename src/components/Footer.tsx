@@ -8,8 +8,8 @@ export function Footer() {
       <div className="container-hub grid gap-10 py-14 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
         <div className="max-w-xs">
           <Link href="/" className="flex items-center gap-2.5" aria-label={`${site.name} home`}>
-            <HubMark className="h-8 w-8" />
-            <span className="font-display text-lg font-extrabold tracking-tight text-ink">
+            <HubMark className="h-10 w-10" />
+            <span className="font-display text-xl font-extrabold tracking-tight text-ink">
               10th<span className="text-brand"> HUB</span>
             </span>
           </Link>
